@@ -4,27 +4,29 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-      "debug": "nodemon src/index.ts",
-      "build": "tsc",
-      "build:watch": "tsc -w",
-      "lint:list": "eslint */**/*.js --fix",
-      "lint": "eslint */**/*.ts --fix",
-      "start": "node ./dist/index.js"
+        "debug": "nodemon src/index.ts",
+        "build": "tsc",
+        "build:watch": "tsc -w",
+        "lint:list": "eslint */**/*.js --fix",
+        "lint": "eslint */**/*.ts --fix",
+        "start": "node ./dist/index.js"
     },
     "author": "Jackson Ming Hu <huming2207@gmail.com>",
     "license": "GPL-3.0",
     "devDependencies": {
-      "@types/node": "^15.12.4",
-      "@typescript-eslint/eslint-plugin": "^4.27.0",
-      "@typescript-eslint/parser": "^4.27.0",
-      "eslint": "^7.29.0",
-      "eslint-config-prettier": "^8.3.0",
-      "eslint-plugin-prettier": "^3.4.0",
-      "nodemon": "^2.0.7",
-      "prettier": "^2.3.1",
-      "typescript": "^4.3.4"
+        "@types/node": "^16.0.0",
+        "@types/serialport": "^8.0.1",
+        "@typescript-eslint/eslint-plugin": "^4.28.1",
+        "@typescript-eslint/parser": "^4.28.1",
+        "eslint": "^7.30.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-prettier": "^3.4.0",
+        "nodemon": "^2.0.9",
+        "prettier": "^2.3.2",
+        "typescript": "^4.3.5"
     },
     "dependencies": {
-      "ts-node": "^10.0.0"
+        "serialport": "^9.2.0",
+        "ts-node": "^10.0.0"
     }
-  }
+}
