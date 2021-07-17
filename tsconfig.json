@@ -2,7 +2,7 @@
     "compilerOptions": {
       "module": "commonjs",
       "esModuleInterop": true,
-      "target": "ES2019",
+      "target": "ES2021",
       "noImplicitAny": true,
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true,
@@ -24,12 +24,7 @@
       "strictNullChecks": true,
       "strictFunctionTypes": true,
       // "strictBindCallApply": true,
-      "lib": [
-        "es2019",
-        "es2020.bigint",
-        "es2020.string",
-        "es2020.symbol.wellknown"
-      ]
+      "lib": ["ES2021"]
     },
     "include": [
       "src/**/*"
