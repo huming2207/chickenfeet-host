@@ -1,3 +1,13 @@
-import fastify from "fastify";
+import dotenv from "dotenv";
 
-const server = fastify()
+import { buildServer } from "./common/server";
+
+dotenv.config();
+
+buildServer()
+  .then(() => {
+    console.log("Started");
+  })
+  .catch((err) => {
+    console.error(err);
+  });

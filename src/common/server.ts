@@ -2,10 +2,12 @@ import fastify, { FastifyInstance } from "fastify";
 import fastifySwagger from "fastify-swagger";
 import pino from "pino";
 
+import handlers from "../handlers";
+
 export const buildFastify = async (): Promise<FastifyInstance> => {
   const logger = pino({
-    level: process.env.DS_LOG_LEVEL || "warn",
-    prettyPrint: process.env.DS_LOG_PRETTY === "true" ? { colorize: true, crlf: false } : false,
+    level: process.env.CF_LOG_LEVEL || "warn",
+    prettyPrint: process.env.CF_LOG_PRETTY === "true" ? { colorize: true, crlf: false } : false,
     name: "cf-host-api",
   });
 
@@ -13,7 +15,7 @@ export const buildFastify = async (): Promise<FastifyInstance> => {
     logger,
   });
 
-  if (process.env.DS_DISABLE_SWAGGER !== "true") {
+  if (process.env.CF_DISABLE_SWAGGER !== "true") {
     server.register(fastifySwagger, {
       routePrefix: "/api/documentation",
       exposeRoute: true,
@@ -28,6 +30,8 @@ export const buildFastify = async (): Promise<FastifyInstance> => {
     });
   }
 
+  await server.register(handlers, { prefix: "/api" });
+
   return server;
 };
 
@@ -36,8 +40,8 @@ export const buildServer = async (): Promise<void> => {
     const fastify = await buildFastify();
 
     await fastify.listen(
-      parseInt(process.env.DS_PORT || "5000"),
-      process.env.DS_ADDR || "localhost",
+      parseInt(process.env.CF_PORT || "5000"),
+      process.env.CF_ADDR || "localhost",
     );
 
     fastify.log.info("Fastify is started.");
@@ -46,7 +50,7 @@ export const buildServer = async (): Promise<void> => {
         console.error(err);
         process.exit(1);
       }
-      if (process.env.DS_DISABLE_SWAGGER !== "true") fastify.swagger();
+      if (process.env.CF_DISABLE_SWAGGER !== "true") fastify.swagger();
     });
   } catch (err) {
     console.error(`Failed when starting API server: ${err}`);
