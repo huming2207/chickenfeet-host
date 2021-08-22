@@ -4,9 +4,9 @@ export const ActionSchema: FastifySchema = {
   body: {
     type: "object",
     properties: {
-      x: { type: "number", minimum: 0, maximum: 160 },
-      y: { type: "number", minimum: 0, maximum: 100 },
-      z: { type: "number", minimum: 0, maximum: 35 },
+      x: { type: "number", minimum: -160, maximum: 160 },
+      y: { type: "number", minimum: -100, maximum: 100 },
+      z: { type: "number", minimum: -35, maximum: 35 },
     },
   },
 };
