@@ -93,6 +93,10 @@ class SerialManager {
     console.log("Position", this.currPosition);
     console.log("State", this.machineState);
   };
+
+  public getPosition = (): MachinePosition => {
+    return this.currPosition;
+  };
 }
 
 export default new SerialManager();
