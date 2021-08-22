@@ -26,11 +26,17 @@ const setPosition = async (
   }
 };
 
-// // eslint-disable-next-line @typescript-eslint/no-unused-vars
-// const getPosition = async (req: FastifyRequest, reply: FastifyReply): Promise<void> => {
-  
-// };
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const getPosition = async (req: FastifyRequest, reply: FastifyReply): Promise<void> => {
+  await reply.type("application/json").send({
+    message: "OK",
+    data: {
+      pos: serial.getPosition(),
+    },
+  });
+};
 
 export default async function bootstrap(server: FastifyInstance): Promise<void> {
   server.post("/pos", { schema: ActionSchema }, setPosition);
+  server.get("/pos", getPosition);
 }

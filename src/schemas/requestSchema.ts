@@ -21,3 +21,12 @@ export const StateSchema: FastifySchema = {
     },
   },
 };
+
+export const SetPumpSchema: FastifySchema = {
+  body: {
+    type: "object",
+    properties: {
+      level: { type: "integer", minimum: 0, maximum: 1000 },
+    },
+  },
+};
